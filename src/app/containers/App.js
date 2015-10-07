@@ -14,12 +14,19 @@ class App extends Component {
 		dispatch(addTask(task));
 	}
 
+	deleteItem = (index) => {
+		return e => {
+			e.preventDefault();
+			console.log(index, ' TODO :)');
+		}
+	}
+
 	render() {
 		return (
 			<div className="container">
 				<Header/>
 				<TaskAction onSubmit={this.submit}/>
-				<Lists items={this.props.items}/>
+				<Lists items={this.props.items} deleteItem={this.deleteItem}/>
 			</div>
 		);
 	}
