@@ -1,27 +1,35 @@
-import { ADD_TASK } from '../actions';
+import { ADD_TASK, DELETE_TASK } from '../actions';
 import { combineReducers } from 'redux';
 
 const tasksState = {
 	items: []
 }
 
-function addTask(state = tasksState, action) {
+
+function task(state = tasksState, action) {
 	switch(action.type)  {
+			
 		case ADD_TASK:
 			return Object.assign({}, state, {
-				items: [
-					action.task,
-					...state.items
-				]
+				items: [{
+					id: state.items.reduce((maxId, task) => Math.max(task.id, maxId), -1) + 1,
+					text: action.task
+				},...state.items]
 			})
-			break;
-	}
+
+		case DELETE_TASK: 
+			return Object.assign({}, state, {
+				items: state.items.filter(task => 
+					task.id != action.id
+				)
+			})
+	}	
 	
 	return state;
 }
 
 const app = combineReducers({
-	addTask
+	task
 })
 
 export default app;

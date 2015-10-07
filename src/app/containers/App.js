@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import TaskAction from '../components/TaskAction';
 import Lists from '../components/Lists';
 
-import { addTask } from '../actions';
+import { addTask, deleteTask } from '../actions';
 
 class App extends Component {
 	
@@ -17,7 +17,8 @@ class App extends Component {
 	deleteItem = (index) => {
 		return e => {
 			e.preventDefault();
-			console.log(index, ' TODO :)');
+			const { dispatch } = this.props;
+			dispatch(deleteTask(index));
 		}
 	}
 
@@ -33,7 +34,8 @@ class App extends Component {
 }
 
 function mapToState(state) {
-	const { items } = state.addTask;
+	const { items } = state.task;
+
 	return {
 		items
 	}

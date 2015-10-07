@@ -14,7 +14,9 @@ class Lists extends Component {
 		let items = () => {
 			return Object.keys(this.state.items).map(index => {
 				return (
-					<li key={index}>{ this.state.items[index] } - <a href="" onClick={this.props.deleteItem(index)}>delete</a></li>
+					<li key={this.state.items[index].id}>
+						{ this.state.items[index].text } - <a href="" onClick={this.props.deleteItem(this.state.items[index].id)}>delete</a>
+					</li>
 				)
 			})
 		}()
