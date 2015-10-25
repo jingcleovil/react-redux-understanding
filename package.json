@@ -28,6 +28,7 @@
     "jest-cli": "^0.5.4",
     "laravel-elixir": "^3.2.8",
     "lodash": "^3.10.1",
-    "webpack": "^1.12.1"
+    "webpack": "^1.12.1",
+    "laravel-elixir": "^3.2.8"
   }
 }
